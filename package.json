@@ -1,0 +1,8 @@
+{
+  "name": "lotto-first-prize-simulator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
