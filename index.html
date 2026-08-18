@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>로또 1등 시뮬레이터</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header>
+      <p class="eyebrow">LOTTO 6/45 · FIRST PRIZE</p>
+      <h1>1등은 언제 올까?</h1>
+      <p class="intro">내 번호 1장과 자동 번호 99장을 매주 구매했을 때, 처음 1등이 되는 순간을 시뮬레이션합니다.</p>
+    </header>
+
+    <section class="card selection-card" aria-labelledby="selection-title">
+      <div class="section-heading">
+        <div><p class="step">STEP 01</p><h2 id="selection-title">행운의 번호를 골라주세요</h2></div>
+        <strong id="selected-count" aria-live="polite">0 / 6 선택</strong>
+      </div>
+      <fieldset class="mode-picker">
+        <legend>번호 선택 방식</legend>
+        <label><input type="radio" name="selection-mode" value="manual" checked /> 수동 선택 <small>6개 직접 선택</small></label>
+        <label><input type="radio" name="selection-mode" value="partial" /> 부분 선택 <small>1~5개 선택 후 자동 완성</small></label>
+        <label><input type="radio" name="selection-mode" value="auto" /> 자동 선택 <small>6개 모두 무작위</small></label>
+      </fieldset>
+      <div id="number-grid" class="number-grid" aria-label="로또 번호 선택"></div>
+      <button id="auto-select-button" class="text-button" type="button" hidden>새 자동 번호 뽑기</button>
+      <div class="settings">
+        <label>시작일 <input id="start-date" type="date" required /></label>
+        <p>매주 100장 · 장당 1,000원</p>
+      </div>
+      <div class="actions">
+        <button id="clear-button" class="secondary" type="button">선택 초기화</button>
+        <button id="start-button" class="primary" type="button" disabled>1등 시뮬레이션 시작</button>
+        <button id="cancel-button" class="secondary" type="button" hidden>계산 취소</button>
+      </div>
+      <p id="status" class="status" aria-live="polite">번호 6개를 선택해 주세요.</p>
+    </section>
+
+    <section id="result" class="card result-card" hidden aria-labelledby="result-title">
+      <p class="step">SIMULATION RESULT</p><h2 id="result-title">드디어 1등입니다!</h2>
+      <div class="stats">
+        <div><span>당첨까지</span><strong id="weeks"></strong><small id="elapsed"></small></div>
+        <div><span>당첨 예정일</span><strong id="winning-date"></strong></div>
+        <div><span>누적 구매</span><strong id="tickets"></strong><small id="cost"></small></div>
+      </div>
+      <div class="numbers-result"><span>당첨 번호</span><div id="draw-balls" class="result-balls"></div></div>
+      <div class="numbers-result"><span>1등 구매 번호</span><div id="ticket-balls" class="result-balls"></div><small id="ticket-type"></small></div>
+      <p class="notice">이 결과는 무작위 시뮬레이션이며 실제 로또 당첨을 예측하지 않습니다.</p>
+    </section>
+  </main>
+  <script src="standalone.js"></script>
+</body>
+</html>
